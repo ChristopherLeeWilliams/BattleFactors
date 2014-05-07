@@ -6,10 +6,12 @@ CSIS 10A (Java) Final
 # Final Project Ideas
 
 ## Idea 1)
-### Maybe some variance of 2048?
+### A Variance of 2048 game.
 
 ## Idea 2)
-### Reads a notepad document and provides a summary on it.
+### Document Summary.
+  Counts the words, sentences, paragraphs, etc... of a word document. The data per paragraph is gathered into "paragraph" objects, and: Paragraph[] allParagraphs = new Paragraph[determinedParagraphNumber]; will be made to store all the data.
 
 ## Idea 3)
-### Still thinking of other ideas.
+### Gridworld String Printer.
+  The user can input a string including letters from the alphabet or numbers and a series of bugs will write out the string on the GUI. Maybe give the option to specify size (font) and color. 

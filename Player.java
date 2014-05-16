@@ -8,10 +8,10 @@
 public class Player extends Character 
 {
     // Player Variables
-    protected int lv;      // Default = 1
-    protected int hp;      // Default = 20: (lv * 20)
-    protected int exp;     // Default = 0
-    protected int[] atk;   // Default = 10: (1,2,5,10)
+    //protected int lv;      // Default = 1
+    //protected int hp;      // Default = 20: (lv * 20)
+    ///protected int exp;     // Default = 0
+    //protected int[] atk;   // Default = 10: (1,2,5,10)
     protected int wins;    // Tallies Battles won
     protected int losses;  // Tallies Battles lost
     
@@ -31,7 +31,7 @@ public class Player extends Character
     }
 
     public void setAtk(int n){
-        atk = factoring(n);
+        this.atk = factoring(n);
     }
     
     private static int checkLv(int xp){
@@ -52,8 +52,8 @@ public class Player extends Character
             newAtk[i] = atk[i];
         }
         newAtk[atk.length] = n;
-        atk = newAtk;
-        wins++;
+        this.atk = newAtk;
+        this.wins++;
     }
 
     // selects random index in player's atk array to delete, as a result of losing.
@@ -67,8 +67,8 @@ public class Player extends Character
                 counter++;
             }
         }
-        atk = newAtk;
-        losses++;
+        this.atk = newAtk;
+        this.losses++;
     }
 
     @Override

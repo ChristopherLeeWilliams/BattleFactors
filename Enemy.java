@@ -8,9 +8,9 @@
 public class Enemy extends Character
 {
     // Enemy Variables, scales to players current level
-    protected int rank; 
-    protected int hp;
-    protected int[] atk;
+    // protected int rank; 
+    // protected int hp;
+    // protected int[] atk;
     /**
      * Constructor for objects of class Player
      */
@@ -21,8 +21,9 @@ public class Enemy extends Character
 
     public Enemy(int n){
         int playerLv = n;
+        this.lv = playerLv;
         this.rank = chooseRank(playerLv);      
-        this.hp = (10 * playerLv) + rank;
+        this.hp = (8 * playerLv) + rank;
         this.atk = factoring(rank);
     }
 
@@ -42,12 +43,12 @@ public class Enemy extends Character
     }
     
     public void setAtk(int n){
-        atk = factoring(n);
+        this.atk = factoring(n);
     }
 
     @Override
     public String toString(){
-        String s = "Enemy:\nRank: " + rank + "\nHit Points: " + hp + "\nAttack: [ ";
+        String s = "Enemy:\nLevel:" + lv + "\nRank: " + rank + "\nHit Points: " + hp + "\nAttack: [ ";
         for (int n : atk){
             s = s + n + " ";
         }

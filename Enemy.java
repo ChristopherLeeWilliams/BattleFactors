@@ -27,6 +27,7 @@ public class Enemy extends Character
         this.atk = factoring(rank);
     }
 
+    // Chooses the enemies rank based on the players current level
     public static int chooseRank(int playerLv){
         int n = ((playerLv -1) * 10) + (int)(Math.random()*10);
         int length = countFactors(n).length;

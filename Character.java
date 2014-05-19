@@ -13,6 +13,7 @@ public class Character
     protected int[] atk;
     protected int rank;
     
+    // Counts the size needed for the array
     public static int[] countFactors(int n){
         int counter = 0;
         for (int factors = 1; factors <= n; factors++){

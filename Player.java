@@ -8,12 +8,12 @@
 public class Player extends Character 
 {
     // Player Variables
-    //protected int lv;      // Default = 1
-    //protected int hp;      // Default = 20: (lv * 20)
-    ///protected int exp;     // Default = 0
-    //protected int[] atk;   // Default = 10: (1,2,5,10)
-    protected int wins;    // Tallies Battles won
-    protected int losses;  // Tallies Battles lost
+    // protected int lv;     // Default = 1
+    // protected int hp;     // Default = 20: (lv * 20)
+    // protected int exp;    // Default = 0
+    // protected int[] atk;  // Default = 10: (1,2,5,10)
+    protected int wins;      // Tallies Battles won
+    protected int losses;    // Tallies Battles lost
     
     /**
      * Constructor for objects of class Player
@@ -56,7 +56,7 @@ public class Player extends Character
         this.wins++;
     }
 
-    // selects random index in player's atk array to delete, as a result of losing.
+    // Selects random index in player's atk array to delete, as a result of losing.
     public void loss(){
         int[] newAtk = new int[atk.length - 1];
         int counter = 0;

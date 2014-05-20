@@ -29,22 +29,39 @@ public class Enemy extends Character
 
     // Chooses the enemies rank based on the players current level
     public static int chooseRank(int playerLv){
-        int n = ((playerLv -1) * 10) + (int)(Math.random()*10);
+        int n = ((playerLv) * 10) + (int)(Math.random()*10);
         int length = countFactors(n).length;
         if (length < 3){
             if ((int)(Math.random()*10*(20-playerLv)) != 5){
                 n = n + 1;
             }
         }
-        
+
         if (n == 0){
             n = 1;
         }
         return n; 
     }
     
+     public void print(){
+        String s = "Enemy:\nLevel:" + lv + "\nRank: " + rank + "\nHit Points: " + hp + "\nAttack: [ ";
+        for (int n : atk){
+            s = s + n + " ";
+        }
+        s = s + "]\n";
+        System.out.println(s);
+    }
+    
+    public int getHP(){
+        return this.hp;
+    }
+
     public void setAtk(int n){
         this.atk = factoring(n);
+    }
+
+    public void setHP(int n){
+        this.hp = n;
     }
 
     @Override
@@ -55,5 +72,5 @@ public class Enemy extends Character
         }
         s = s + "]\n";
         return s;
-        }
     }
+}

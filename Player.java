@@ -24,7 +24,7 @@ public class Player extends Character
     }
 
     public Player(int exp, int atk){
-        this.lv = checkLv(exp);
+        this.lv = checkLV(exp);
         this.hp = (lv * 20) + 10;
         this.exp = exp;
         this.atk = factoring(atk);
@@ -50,7 +50,11 @@ public class Player extends Character
         this.exp = n;
     }
     
-    private static int checkLv(int xp){
+    public void setLV(int n){
+       this.lv = n; 
+    }
+    
+    public static int checkLV(int xp){
         int[] expNeeded = {10, 40, 90, 160, 250, 360, 490, 640, 810, 1000};
         int level = 0;
         for (int i = 0; i < expNeeded.length; i++){

@@ -23,8 +23,16 @@ public class Enemy extends Character
         int playerLv = n;
         this.lv = playerLv;
         this.rank = chooseRank(playerLv);      
-        this.hp = (8 * playerLv) + rank;
-        this.atk = factoring(rank);
+        this.hp = (8 * playerLv) + this.rank;
+        this.atk = factoring(this.rank);
+    }
+
+    public int getHP(){
+        return this.hp;
+    }
+
+    public void setHP(int n){
+        this.hp = n;
     }
 
     // Chooses the enemies rank based on the players current level
@@ -42,31 +50,19 @@ public class Enemy extends Character
         }
         return n; 
     }
-    
-     public void print(){
-        String s = "Enemy:\nLevel:" + lv + "\nRank: " + rank + "\nHit Points: " + hp + "\nAttack: [ ";
+
+    public void print(){
+        String s = "Enemy:\nLevel: " + lv + "\nRank: " + rank + "\nHit Points: " + hp + "\nAttack: [ ";
         for (int n : atk){
             s = s + n + " ";
         }
         s = s + "]\n";
         System.out.println(s);
     }
-    
-    public int getHP(){
-        return this.hp;
-    }
-
-    public void setAtk(int n){
-        this.atk = factoring(n);
-    }
-
-    public void setHP(int n){
-        this.hp = n;
-    }
 
     @Override
     public String toString(){
-        String s = "Enemy:\nLevel:" + lv + "\nRank: " + rank + "\nHit Points: " + hp + "\nAttack: [ ";
+        String s = "Enemy:\nLevel: " + lv + "\nRank: " + rank + "\nHit Points: " + hp + "\nAttack: [ ";
         for (int n : atk){
             s = s + n + " ";
         }

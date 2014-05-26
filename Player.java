@@ -12,6 +12,7 @@ public class Player extends Character
     // protected int hp; 
     // protected int exp;    
     // protected int[] atk;  
+    protected String playerName; 
 
     /**
      * Constructor for objects of class Player
@@ -26,6 +27,7 @@ public class Player extends Character
         this.hp = (this.lv * 20) + 10;
         this.exp = exp;
         this.atk = factoring(atk);
+        this.playerName = "";
     }
 
     public int getHP(){
@@ -55,6 +57,10 @@ public class Player extends Character
     public void setXP(int n){
         this.exp = n;
     }    
+    
+    public void setPlayerName(String s){
+        this.playerName = s;
+    }
 
     public int checkLV(){
         int[] expNeeded = {10, 40, 90, 160, 250, 360, 490, 640, 810, 1000};
@@ -82,7 +88,7 @@ public class Player extends Character
     }
 
     public void print(){
-        String s = "Player:\nLevel: " + lv + "\nHit Points: " + hp + "\nExperience: " + exp + "\nAttack: [ ";
+        String s = "Player: "+playerName+"\nLevel: "+lv+"\nHit Points: "+hp+"\nExperience: "+exp+"\nAttack: [ ";
         for (int n : atk){
             s = s + n + " ";
         }
@@ -102,7 +108,7 @@ public class Player extends Character
 
     @Override
     public String toString(){
-        String s = "Player:\nLevel: " + lv + "\nHit Points: " + hp + "\nExperience: " + exp + "\nAttack: [ ";
+        String s = "Player: "+playerName+"\nLevel: "+lv+"\nHit Points: "+hp+"\nExperience: "+exp+"\nAttack: [ ";
         for (int n : atk){
             s = s + n + " ";
         }

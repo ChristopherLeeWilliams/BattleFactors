@@ -30,7 +30,7 @@ public class Start
         }        
         if (user.atk.length < 1){print("Game over! :(",2);}
     }
-    
+
     // Displays opening message
     private static void intro(){
         print("What is your name great adventurer? ", 0);
@@ -39,7 +39,8 @@ public class Start
         String answer = keyboard.nextLine();
         if (checkAnswer(answer,"yes") == false){intro();}
         user.setPlayerName(playerName);
-        print("\f                                   Welcome to the game of Battle Factors!", 2);
+        print("\f~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~",1);
+        print("                                   Welcome to the game of Battle Factors!", 2);
         print("     In this game, you will be faced with many enemies. The enemies will be scaled to your current level, from 1 to 10." ,1);
         print("Your object is simple, fight your way to level 10 and defeat the evil rank 100! There will be many battles along the" ,1);
         print("way. Winning these battle will not only give you experience, but will also increase your attack power. Losing a battle",1);
@@ -47,6 +48,7 @@ public class Start
         print("from your attack array being deleted. If a player losses all numbers in their attack array, then it is game over. Run",1);
         print("when necessary and fight your way to the top!",2);
         print("                                          Good luck " + user.playerName + "!",1);
+        print("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~",1);
         print("\nPress enter to continue ", 0);
         String enter = keyboard.nextLine();
         print("\f",0);
@@ -57,7 +59,9 @@ public class Start
         // Create an enemy, which scales to players current level.
         Enemy cpu = new Enemy(user.lv);
         // Message: A wild "" has appeared! 
-        print("A wild Rank " + cpu.rank + " has appeared!",2);
+        print("~~~~~~~~~~~~~~~~~~~~~~~~~~~~",1);
+        print("A wild Rank " + cpu.rank + " has appeared!",1);
+        print("~~~~~~~~~~~~~~~~~~~~~~~~~~~~",1);
         // conduct battle: int result = fight(player, enemy), will return -1 for loss, 0 for run, or 1 for victory.          
         // If result is 2, player has another move
         int result = 2;
@@ -70,14 +74,18 @@ public class Start
             user.setXP(user.getXP() + cpu.rank);
             user.setLV(user.checkLV());
             if (user.checkLV()-iLv>0 ) {
-                print("You leveled up and gained " +((user.getLV()+1) * 10)+ " to your attack array!",2);
+                print("You leveled up and gained " +((user.getLV()+1) * 10)+ " to your attack array!",1);
                 user.victory((user.getLV()+1) * 10);
             }
             user.fixHP();   
+            print("~~~~~~~~~~~~~~~~~~~~~~~~~~~~",1);
             user.print();
+            print("~~~~~~~~~~~~~~~~~~~~~~~~~~~~",1);
         }
         else if (result == 0) {
+            print("~~~~~~~~~~~~~~~~~~~~~~~~~~~~",1);
             print(user.playerName + " successfully ran!",1);
+            print("~~~~~~~~~~~~~~~~~~~~~~~~~~~~",1);
         }
         else {
             user.loss();
@@ -95,11 +103,15 @@ public class Start
         System.out.println(h);
         System.out.println(c);
         // Message/Input: What would you like to do?
-        print("What would you like to do?\n1) Attack \n2) Run ",2);
+        print("~~~~~~~~~~~~~~~~~~~~~~~~~~~~",1);
+        print("What would you like to do?\n1) Attack \n2) Run ",1);
+        print("~~~~~~~~~~~~~~~~~~~~~~~~~~~~",2);
         int n = keyboard.nextInt();
         print("\f",0);
         if (n != 1 && n != 2) {
-            print("Invalid move X_X ",2);
+            print("~~~~~~~~~~~~~~~~~~~~~~~~~~~~",1);
+            print("Invalid move X_X ",1);
+            print("~~~~~~~~~~~~~~~~~~~~~~~~~~~~",1);
             return 2;
         }
         // if:  n = 2 send it to run method.
@@ -111,7 +123,8 @@ public class Start
             //if successful, return 0.
             if (run()) {return 0;}  
             //else: Message: "Failed to run". Players attacked will be skipped in attack method.
-            print("Failed to run! ",1);
+            print("~~~~~~~~~~~~~~~~~~~~~~~~~~~~",1);
+            print("Failed to run! ",2);
             skipAttack = true;
         }          
         // Player and Enemy attack (failed to run or chose to attack).
@@ -127,7 +140,9 @@ public class Start
         int playerAttack = critical(p);
         int enemyAttack = critical(e);
         // Player Attacks, if skipAttack is not true.
+        //print("~~~~~~~~~~~~~~~~~~~~~~~~~~~~",1);
         if (skipAttack == false) {
+            print("~~~~~~~~~~~~~~~~~~~~~~~~~~~~",1);
             print(user.playerName + " did " +playerAttack+ " damage. ",0);
             if (playerAttack == 2*p) {print("A critical hit! ",0);}
             else if (playerAttack == 3*p) {print("You hit the enemy's weak spot!",0);}
@@ -135,15 +150,16 @@ public class Start
             c.setHP(c.getHP() - playerAttack);
             // If enemy looses all hp, notify the player and return 1
             if (c.getHP() <= 0) {
-                print("Enemy has fainted!",2);
+                print("Enemy has fainted!",1);
+                print("~~~~~~~~~~~~~~~~~~~~~~~~~~~~",2);
                 return 1;
             }
         }
         // Enemy Attacks
         print("Enemy did " +enemyAttack+ " damage. ",0);
         if (enemyAttack > e){
-            if (c.rank < 100){print("A critical hit! Enemy leeched some health!",0);}
-            else {print("A critical hit! Enemy leeched a lot of health!",0);}
+            if (c.rank < 100){print("A critical hit! Enemy leeched some health! ",0);}
+            else {print("A critical hit! Enemy leeched a lot of health! ",0);}
             if ((c.rank % 2) ==0 || c.rank == 100) { // Even ranked enemies or rank 100 have the special ability to leech half the damage they inflict on critical hits.
                 c.setHP(c.getHP() + Math.round(enemyAttack/2));
             }
@@ -151,13 +167,14 @@ public class Start
                 c.setHP(c.getHP() + Math.round(playerAttack/2));
             }
         }
-        print("",2);
         h.setHP(h.getHP() -enemyAttack);
         // If player looses all hp, notify the player and return -1
         if (h.getHP() <= 0) {
-            print("Player " +user.playerName+ " has fainted!",2);
+            print("Player " +user.playerName+ " has fainted!",1);
+            print("~~~~~~~~~~~~~~~~~~~~~~~~~~~~",2);
             return -1;
         }
+        print("\n~~~~~~~~~~~~~~~~~~~~~~~~~~~~",1);
         // If neither the Player nor enemy has fainted return 2.
         return 2;
     }
@@ -168,22 +185,26 @@ public class Start
         boss.setRank(100);
         boss.setHP(300);
         boss.setAtk(bossAttack);
-
-        print("Prepare yourself! The evil rank 100 has appeared!",2);
+        print("~~~~~~~~~~~~~~~~~~~~~~~~~~~~",1);
+        print("Prepare yourself! The evil rank 100 has appeared!",1);
+        print("~~~~~~~~~~~~~~~~~~~~~~~~~~~~",1);
         int result = 2;
         while(result == 2){
             result = fight(user,boss);
         }
         if (result == 1) {
-            print("Congratulations! You defeated all of the battle factors!",2);
+            print("Congratulations! You defeated all of the battle factors!",1);
+            print("~~~~~~~~~~~~~~~~~~~~~~~~~~~~",2);
             bossWin = true;
         }
         if (result == -1) {
             user.fixHP(); 
             user.loss();
             user.loss();
-            print("You lost 2 random numbers from your attack array! ",2);
+            print("You lost 2 random numbers from your attack array! ",1);
+            print("~~~~~~~~~~~~~~~~~~~~~~~~~~~~",1);
             user.print();
+            print("~~~~~~~~~~~~~~~~~~~~~~~~~~~~",1);
             boss = null; 
         }
     }

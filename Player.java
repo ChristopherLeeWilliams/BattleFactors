@@ -88,11 +88,11 @@ public class Player extends Character
     }
 
     public void print(){
-        String s = "Player: "+playerName+"\nLevel: "+lv+"\nHit Points: "+hp+"\nExperience: "+exp+"\nAttack: [ ";
+        String s = "\nPlayer: "+playerName+" \nLevel: "+lv+" \nHit Points: "+hp+" \nExperience: "+exp+" \nAttack: [ ";
         for (int n : atk){
             s = s + n + " ";
         }
-        s = s + "]\n";
+        s = s + "] \n";
         System.out.println(s);
     }
 
@@ -108,11 +108,11 @@ public class Player extends Character
 
     @Override
     public String toString(){
-        String s = "Player: "+playerName+"\nLevel: "+lv+"\nHit Points: "+hp+"\nExperience: "+exp+"\nAttack: [ ";
+        String s = "\nPlayer: "+playerName+" \nLevel: "+lv+" \nHit Points: "+hp+" \nExperience: "+exp+" \nAttack: [ ";
         for (int n : atk){
             s = s + n + " ";
         }
-        s = s + "]\n";
+        s = s + "] \n";
         return s;
     }
 }

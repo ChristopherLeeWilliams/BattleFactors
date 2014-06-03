@@ -106,7 +106,8 @@ public class Start
         print("~~~~~~~~~~~~~~~~~~~~~~~~~~~~",1);
         print("What would you like to do?\n1) Attack \n2) Run ",1);
         print("~~~~~~~~~~~~~~~~~~~~~~~~~~~~",2);
-        int n = keyboard.nextInt();
+        String s = keyboard.nextLine();
+        int n = calculateMove(s);
         print("\f",0);
         if (n != 1 && n != 2) {
             print("~~~~~~~~~~~~~~~~~~~~~~~~~~~~",1);
@@ -207,6 +208,12 @@ public class Start
             print("~~~~~~~~~~~~~~~~~~~~~~~~~~~~",1);
             boss = null; 
         }
+    }
+    
+    public static int calculateMove(String s) {
+        if (checkAnswer(s,"1")) { return 1;}
+        if (checkAnswer(s,"2")) { return 2;}
+        return 0;
     }
 
     public static Boolean checkAnswer(String a, String b){

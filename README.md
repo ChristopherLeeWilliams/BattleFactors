@@ -1,4 +1,4 @@
-finalProject
+Project Proposal
 ============
 
 CSIS 10A (Java) Final 

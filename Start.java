@@ -151,7 +151,7 @@ public class Start
             // If enemy looses all hp, notify the player and return 1
             if (c.getHP() <= 0) {
                 print("Enemy has fainted!",1);
-                print("~~~~~~~~~~~~~~~~~~~~~~~~~~~~",2);
+                print("~~~~~~~~~~~~~~~~~~~~~~~~~~~~",1);
                 return 1;
             }
         }

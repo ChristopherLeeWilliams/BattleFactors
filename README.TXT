@@ -25,7 +25,7 @@ randomly chooses a factor out of a number's array of factors
 as the amount of damage to be inflicted on the opponent.
 
 There is a 10% chance the player and enemy can hit criticals, 
-giving a 2x damage multiplier on the hit, when the enemy does 
+giving a 2x damage multiplier on the hit. When the enemy does 
 a critical they have the added effect of gaining some health.
 The player also has the added 2% chance to hit the enemy's 
 weak spot, producing a 3x damage multiplier. 
